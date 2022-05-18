@@ -12,39 +12,39 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import tk.soylorenzo.dao.PersonaDAO;
-import tk.soylorenzo.models.Persona;
+import tk.soylorenzo.dao.ObservacionesDAO;
+import tk.soylorenzo.models.Observaciones;
 
-@RestController //Decoradores del framework - sirven para inyectar dependencias
-@RequestMapping("persona")
-public class PersonaRest {
-	
+@RestController
+@RequestMapping("observaciones")
+public class ObservacionesRest {
+
 	@Autowired
-	private PersonaDAO personaDAO;
+	private ObservacionesDAO observacionesDAO;
 	
 	//HTTP Request 
 	//Post
 	@PostMapping("/agregar")
-	public void guardar(@RequestBody Persona persona) { //@RequestBody  Para transformar de JSON a Persona
-		personaDAO.save(persona);
+	public void guardar(@RequestBody Observaciones observacion) { //@RequestBody  Para transformar de JSON a Persona
+		observacionesDAO.save(observacion);
 	}
 	
 	//Get
 	@GetMapping("/listar")
-	public List<Persona> listar() {
-		return personaDAO.findAll();
+	public List<Observaciones> listar() {
+		return observacionesDAO.findAll();
 	}
 	
 	//Delete
 	@DeleteMapping("/eliminar/{id}")
 	public void eliminar(@PathVariable("id") Integer id) {
-		personaDAO.deleteById(id);
+		observacionesDAO.deleteById(id);
 	}
 	
 	//Update
 	@PutMapping("/actualizar")
-	public void actualizar(@RequestBody Persona persona) {
-		personaDAO.save(persona);
+	public void actualizar(@RequestBody Observaciones observaciones) {
+		observacionesDAO.save(observaciones);
 		
 	}
 }
