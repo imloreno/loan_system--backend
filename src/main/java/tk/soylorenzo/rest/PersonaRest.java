@@ -23,22 +23,25 @@ public class PersonaRest {
 	private PersonaDAO personaDAO;
 	
 	//HTTP Request 
-	//Get
+	//Post
 	@PostMapping("/agregar")
 	public void guardar(@RequestBody Persona persona) { //@RequestBody  Para transformar de JSON a Persona
 		personaDAO.save(persona);
 	}
 	
+	//Get
 	@GetMapping("/listar")
 	public List<Persona> listar() {
 		return personaDAO.findAll();
 	}
 	
+	//Delete
 	@DeleteMapping("/eliminar/{id}")
 	public void eliminar(@PathVariable("id") Integer id) {
 		personaDAO.deleteById(id);
 	}
 	
+	//Update
 	@PutMapping("/actualizar")
 	public void actualizar(@RequestBody Persona persona) {
 		personaDAO.save(persona);
