@@ -13,40 +13,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import tk.soylorenzo.dao.PersonaDAO;
-import tk.soylorenzo.models.Persona;
+import tk.soylorenzo.dao.EmpleadoDAO;
+import tk.soylorenzo.models.Empleado;
 
 @CrossOrigin
 @RestController //Decoradores del framework - sirven para inyectar dependencias
-@RequestMapping("persona")
-public class PersonaRest {
+@RequestMapping("empleado")
+public class EmpleadoRest {
 	
 	@Autowired
-	private PersonaDAO personaDAO;
+	private EmpleadoDAO empleadoDAO;
 	
 	//HTTP Request 
 	//Post
 	@PostMapping("/agregar")
-	public void guardar(@RequestBody Persona persona) { //@RequestBody  Para transformar de JSON a Persona
-		personaDAO.save(persona);
+	public Empleado guardar(@RequestBody Empleado empleado) { //@RequestBody  Para transformar de JSON a Persona
+		empleadoDAO.save(empleado);
+		return empleado;
 	}
 	
 	//Get
 	@GetMapping("/listar")
-	public List<Persona> listar() {
-		return personaDAO.findAll();
+	public List<Empleado> listar() {
+		return empleadoDAO.findAll();
 	}
 	
 	//Delete
 	@DeleteMapping("/eliminar/{id}")
 	public void eliminar(@PathVariable("id") Long id) {
-		personaDAO.deleteById(id);
+		empleadoDAO.deleteById(id);
 	}
 	
 	//Update
 	@PutMapping("/actualizar")
-	public void actualizar(@RequestBody Persona persona) {
-		personaDAO.save(persona);
-		
+	public Empleado actualizar(@RequestBody Empleado empleado) {
+		empleadoDAO.save(empleado);
+		return empleado;
 	}
 }

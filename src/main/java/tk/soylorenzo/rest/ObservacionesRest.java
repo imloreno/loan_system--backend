@@ -39,7 +39,7 @@ public class ObservacionesRest {
 	
 	//Delete
 	@DeleteMapping("/eliminar/{id}")
-	public void eliminar(@PathVariable("id") Integer id) {
+	public void eliminar(@PathVariable("id") Long id) {
 		observacionesDAO.deleteById(id);
 	}
 	
