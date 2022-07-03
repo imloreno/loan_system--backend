@@ -33,6 +33,8 @@ public class Empleado {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_persona")
     private Persona persona;
+	
+	//fk_empresa
 
 	
 	
