@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Garantia {
@@ -23,6 +25,9 @@ public class Garantia {
 	@Column
 	private Double valor_estimado;
 	
+	@JoinColumn(name="id_prestamo")
+	@ManyToOne
+	private Prestamo prestamo;
 	
 	
 	//Getters & setters

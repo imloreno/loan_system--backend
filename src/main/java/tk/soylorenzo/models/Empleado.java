@@ -1,6 +1,5 @@
 package tk.soylorenzo.models;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,15 +29,26 @@ public class Empleado {
 	private Boolean estado;
 	
 	//Relaciones
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_persona")
-    private Persona persona;
-	
-	//fk_empresa
 
+	@JoinColumn(name = "id_persona")
+	@OneToOne(optional = false)
+	private Persona persona;
 	
-	
+	@JoinColumn(name="id_empresa")
+	@OneToOne(optional=true)
+	private Empresa empresa;
+
+
+
 	//Getters y setters
+	
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
 	public Long getId_empleado() {
 		return id_empleado;
 	}
@@ -86,6 +96,4 @@ public class Empleado {
 	public void setPersona(Persona persona) {
 		this.persona = persona;
 	}
-	
-	
 }

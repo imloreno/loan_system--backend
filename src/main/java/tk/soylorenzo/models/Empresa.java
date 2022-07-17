@@ -11,7 +11,7 @@ public class Empresa {
 	
 	@Id
 	@GeneratedValue( strategy = GenerationType.IDENTITY)
-	private Long id_persona;
+	private Long id_empresa;
 	
 	@Column
 	private String razon_social;
@@ -34,16 +34,16 @@ public class Empresa {
 	
 	//Getters & setters
 
-	public Long getId_persona() {
-		return id_persona;
-	}
-
-	public void setId_persona(Long id_persona) {
-		this.id_persona = id_persona;
-	}
-
 	public String getRazon_social() {
 		return razon_social;
+	}
+
+	public Long getId_empresa() {
+		return id_empresa;
+	}
+
+	public void setId_empresa(Long id_empresa) {
+		this.id_empresa = id_empresa;
 	}
 
 	public void setRazon_social(String razon_social) {

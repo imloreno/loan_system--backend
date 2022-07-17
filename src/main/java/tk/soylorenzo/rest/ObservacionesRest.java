@@ -27,8 +27,8 @@ public class ObservacionesRest {
 	//HTTP Request 
 	//Post
 	@PostMapping("/agregar")
-	public void guardar(@RequestBody Observaciones observacion) { //@RequestBody  Para transformar de JSON a Persona
-		observacionesDAO.save(observacion);
+	public Observaciones guardar(@RequestBody Observaciones observacion) { //@RequestBody  Para transformar de JSON a Persona
+		return observacionesDAO.save(observacion);
 	}
 	
 	//Get

@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Pago {
@@ -20,6 +22,9 @@ public class Pago {
 	private Double monto;
 	
 	// fk_id_prestamo Integer
+	@JoinColumn(name="id_prestamo")
+	@ManyToOne(optional=false)
+	private Prestamo prestamo;
 	
 	
 
@@ -47,6 +52,14 @@ public class Pago {
 
 	public void setId_pago(Long id_pago) {
 		this.id_pago = id_pago;
+	}
+
+	public Prestamo getPrestamo() {
+		return prestamo;
+	}
+
+	public void setPrestamo(Prestamo prestamo) {
+		this.prestamo = prestamo;
 	}
 	
 }

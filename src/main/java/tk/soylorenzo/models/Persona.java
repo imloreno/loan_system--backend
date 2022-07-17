@@ -1,5 +1,6 @@
 package tk.soylorenzo.models;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -113,5 +114,6 @@ public class Persona {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
+
 	
 }

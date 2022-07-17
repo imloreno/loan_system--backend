@@ -27,8 +27,8 @@ public class PersonaRest {
 	//HTTP Request 
 	//Post
 	@PostMapping("/agregar")
-	public void guardar(@RequestBody Persona persona) { //@RequestBody  Para transformar de JSON a Persona
-		personaDAO.save(persona);
+	public Persona guardar(@RequestBody Persona persona) { //@RequestBody  Para transformar de JSON a Persona
+		return personaDAO.save(persona);
 	}
 	
 	//Get

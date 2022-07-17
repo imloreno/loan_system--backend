@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Sancion {
@@ -20,6 +22,9 @@ public class Sancion {
 	private String descripción;
 
 	// fk_prestamo
+	@JoinColumn(name="id_prestamo")
+	@ManyToOne(optional=false)
+	private Prestamo prestamo;
 	
 	
 	//Getters & setters
@@ -47,7 +52,14 @@ public class Sancion {
 	public void setDescripción(String descripción) {
 		this.descripción = descripción;
 	}
-	
+
+	public Prestamo getPrestamo() {
+		return prestamo;
+	}
+
+	public void setPrestamo(Prestamo prestamo) {
+		this.prestamo = prestamo;
+	}
 	
 	
 }
