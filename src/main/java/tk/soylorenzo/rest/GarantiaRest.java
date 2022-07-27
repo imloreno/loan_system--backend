@@ -13,48 +13,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import tk.soylorenzo.dao.EmpleadoDAO;
-import tk.soylorenzo.models.Empleado;
+import tk.soylorenzo.dao.GarantiaDAO;
+import tk.soylorenzo.models.Garantia;
 
 @CrossOrigin
 @RestController //Decoradores del framework - sirven para inyectar dependencias
-@RequestMapping("empleado")
-public class EmpleadoRest {
-	
-	//Attributes
+@RequestMapping("garantia")
+public class GarantiaRest {
+
 	@Autowired
-	private EmpleadoDAO empleadoDAO;
+	private GarantiaDAO garantiaDAO;
 	
 	//HTTP Request 
 	//Post
 	@PostMapping("/agregar")
-	public Empleado guardar(@RequestBody Empleado empleado) { //@RequestBody  Para transformar de JSON a Persona
-		empleadoDAO.save(empleado);
-		return empleado;
+	public Garantia guardar(@RequestBody Garantia garantia) { //@RequestBody  Para transformar de JSON a Garantia
+		return garantiaDAO.save(garantia);
 	}
 	
 	//Get
 	@GetMapping("/listar")
-	public List<Empleado> listar() {
-		return empleadoDAO.findAll();
+	public List<Garantia> listar() {
+		return garantiaDAO.findAll();
 	}
-	
-	//Get
-//	@getMapping("/sesion")
-//	public Empleado sesion() {
-//		return empleadoDAO.
-//	}
-	
+		
 	//Delete
 	@DeleteMapping("/eliminar/{id}")
 	public void eliminar(@PathVariable("id") Long id) {
-		empleadoDAO.deleteById(id);
+		garantiaDAO.deleteById(id);
 	}
 	
 	//Update
 	@PutMapping("/actualizar")
-	public Empleado actualizar(@RequestBody Empleado empleado) {
-		empleadoDAO.save(empleado);
-		return empleado;
+	public void actualizar(@RequestBody Garantia garantia) {
+		garantiaDAO.save(garantia);
+		
 	}
+	
 }

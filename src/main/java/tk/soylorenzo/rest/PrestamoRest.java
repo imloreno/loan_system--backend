@@ -13,48 +13,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import tk.soylorenzo.dao.EmpleadoDAO;
-import tk.soylorenzo.models.Empleado;
+import tk.soylorenzo.dao.PrestamoDAO;
+import tk.soylorenzo.models.Prestamo;
 
 @CrossOrigin
 @RestController //Decoradores del framework - sirven para inyectar dependencias
-@RequestMapping("empleado")
-public class EmpleadoRest {
+@RequestMapping("prestamo")
+public class PrestamoRest {
 	
-	//Attributes
 	@Autowired
-	private EmpleadoDAO empleadoDAO;
+	private PrestamoDAO prestamoDAO;
 	
 	//HTTP Request 
 	//Post
 	@PostMapping("/agregar")
-	public Empleado guardar(@RequestBody Empleado empleado) { //@RequestBody  Para transformar de JSON a Persona
-		empleadoDAO.save(empleado);
-		return empleado;
+	public Prestamo guardar(@RequestBody Prestamo prestamo) { //@RequestBody  Para transformar de JSON Prestamos
+		return prestamoDAO.save(prestamo);
 	}
 	
 	//Get
 	@GetMapping("/listar")
-	public List<Empleado> listar() {
-		return empleadoDAO.findAll();
+	public List<Prestamo> listar() {
+		return prestamoDAO.findAll();
 	}
-	
-	//Get
-//	@getMapping("/sesion")
-//	public Empleado sesion() {
-//		return empleadoDAO.
-//	}
 	
 	//Delete
 	@DeleteMapping("/eliminar/{id}")
 	public void eliminar(@PathVariable("id") Long id) {
-		empleadoDAO.deleteById(id);
+		prestamoDAO.deleteById(id);
 	}
 	
 	//Update
 	@PutMapping("/actualizar")
-	public Empleado actualizar(@RequestBody Empleado empleado) {
-		empleadoDAO.save(empleado);
-		return empleado;
+	public Prestamo actualizar(@RequestBody Prestamo prestamo) {
+		return prestamoDAO.save(prestamo);
 	}
+		
+	
 }

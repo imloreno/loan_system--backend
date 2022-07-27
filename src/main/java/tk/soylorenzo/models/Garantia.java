@@ -64,4 +64,13 @@ public class Garantia {
 		this.valor_estimado = valor_estimado;
 	}
 
+	public Prestamo getPrestamo() {
+		return prestamo;
+	}
+
+	public void setPrestamo(Prestamo prestamo) {
+		this.prestamo = prestamo;
+	}
+	
+
 }
