@@ -17,7 +17,7 @@ public class Empresa {
 	private String razon_social;
 	
 	@Column
-	private Integer nit;
+	private String nit;
 	
 	@Column
 	private String email;
@@ -50,11 +50,11 @@ public class Empresa {
 		this.razon_social = razon_social;
 	}
 
-	public Integer getNit() {
+	public String getNit() {
 		return nit;
 	}
 
-	public void setNit(Integer nit) {
+	public void setNit(String nit) {
 		this.nit = nit;
 	}
 

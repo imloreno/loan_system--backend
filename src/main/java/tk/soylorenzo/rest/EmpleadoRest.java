@@ -1,7 +1,6 @@
 package tk.soylorenzo.rest;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,7 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import tk.soylorenzo.dao.EmpleadoDAO;
+import tk.soylorenzo.dao.EmpresaDAO;
+import tk.soylorenzo.dao.PersonaDAO;
 import tk.soylorenzo.models.Empleado;
+import tk.soylorenzo.models.Empresa;
+import tk.soylorenzo.models.Persona;
 
 @CrossOrigin
 @RestController //Decoradores del framework - sirven para inyectar dependencias
@@ -26,12 +29,25 @@ public class EmpleadoRest {
 	@Autowired
 	private EmpleadoDAO empleadoDAO;
 	
+	@Autowired
+	private EmpresaDAO empresaDAO;
+	
+	@Autowired
+	private PersonaDAO personaDAO;
+	
 	//HTTP Request 
 	//Post
 	@PostMapping("/agregar")
 	public Empleado guardar(@RequestBody Empleado empleado) { //@RequestBody  Para transformar de JSON a Persona
-		empleadoDAO.save(empleado);
-		return empleado;
+		Empleado res = empleadoDAO.save(empleado);
+		if(res.getId_empleado().equals(null)) return null;
+		
+		//Find from other tables
+		Persona persona = personaDAO.findById(empleado.getPersona().getId_persona()).get();
+		Empresa empresa = empresaDAO.findById(empleado.getEmpresa().getId_empresa()).get();
+		res.setPersona(persona);
+		res.setEmpresa(empresa);
+		return res;
 	}
 	
 	//Get
